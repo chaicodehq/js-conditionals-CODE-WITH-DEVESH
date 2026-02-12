@@ -34,26 +34,51 @@
  */
 export function canBorrowBook(memberAge, hasValidCard, overdueBooks) {
   // Your code here
-  if(memberAge<6){
+//   if(memberAge<6){
+//     return {
+//       allowed :false,
+//       message: "Too youung -must be at lease 6 years old"
+//     };
+//   }
+//     if(!hasValidCard){
+//       return {
+//         allowed :false,
+//         message: "Invaild library card -please renew the front desk"
+//       };
+//     }
+// if(overdueBooks >0){
+//   return {
+//     allowed:false,
+//     message: `Please retrun your ${overdueBooks} overdue book (s) first`
+//   }
+// }
+// return {
+//   allowed: true,
+//   message:"You may borrow up to 3 books"
+// };
+  if(memberAge < 6){
     return {
-      allowed :false,
-      message: "Too youung -must be at lease 6 years old"
+      allowed: false,
+      message: "Too young - must be at least 6 years old"
     };
   }
-    if(!hasValidCard){
-      return {
-        allowed :false,
-        message: "Invaild library card -please renew the front desk"
-      };
-    }
-if(overdueBooks >0){
-  return {
-    allowed:false,
-    message: `Please retrun your ${overdueBooks} overdue book (s) first`
+
+  if(!hasValidCard){
+    return {
+      allowed: false,
+      message: "Invalid library card - please renew at the front desk"
+    };
   }
-}
-return {
-  allowed: true,
-  message:"You may borrow up to 3 books"
-};
+
+  if(overdueBooks > 0){
+    return {
+      allowed: false,
+      message: `Please return your ${overdueBooks} overdue book(s) first`
+    };
+  }
+
+  return {
+    allowed: true,
+    message: "You may borrow up to 3 books"
+  };
 }
